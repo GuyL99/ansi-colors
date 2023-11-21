@@ -1,0 +1,15 @@
+version: 2.1
+
+jobs:
+    build:
+        docker:
+            - image: circleci/rust:1.36.0
+        steps:
+            - checkout
+            - run: cargo test --all
+            - run: cargo run --example basic_blue
+            - run: cargo run --example red_bold_blink
+            - run: cargo run --example hidden
+            - run: cargo doc --all
+            - run: cargo build --release
+            - run: cargo build --all
